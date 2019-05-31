@@ -2,16 +2,28 @@ angular.module('todoService', [])
 
 	// super simple service
 	// each function returns a promise object
-	.factory('Todos', ['$http',function($http) {
+	.factory('Bankings', ['$http',function($http) {
 		return {
-			get : function() {
-				return $http.get('/api/todos');
+			getAccount : function() {
+				return $http.get('/api/Account');
 			},
-			createCustomer : function(todoData) {
-				return $http.post('/api/todos', todoData);
+			transaction : function(transInfo) {
+				return $http.post('/api/Transaction', transInfo);
 			},
-			delete : function(id) {
-				return $http.delete('/api/todos/' + id);
+			newAccount : function(accInfo) {
+				return $http.post('api/New', accInfo);
+			},
+			deposit : function(transInfo) {
+				return $http.post('/api/deposit', transInfo);
+			},
+			withdraw : function(transInfo) {
+				return $http.post('/api/withdraw', transInfo);
+			},
+			login: function(acc) {
+				return $http.post('api/login', acc);
 			}
+			// delete : function(id) {
+				// return $http.delete('/api/todos/' + id);
+			// }
 		}
 	}]);

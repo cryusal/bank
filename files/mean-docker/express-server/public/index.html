@@ -41,7 +41,7 @@
 		<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
 			<h1>Welcome to Cloud Bank</h1>
-			<h2>Now we have <span class="label label-info">{{ todos.length }}</span> customers</h2>
+			<!--h2>Now we have <span class="label label-info">{{ todos.length }}</span> customers</h2-->
 		</div>
 
 		<!-- TODO LIST -->
@@ -55,9 +55,7 @@
 					</label>
 				</div>
 
-				<p class="text-center" ng-show="loading">
-					<span class="fa fa-spinner fa-spin fa-3x"></span>
-				</p>
+				
 
 			</div>
 		</div>
@@ -66,15 +64,17 @@
 		<!-- FORM TO CREATE Customers -->
 		<div id="create-form" class="row">
 			<div class="text-center">
-				<form action="login.html" method="post">
+				<form>
 					<div class="form-group">
 						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="account" class="form-control " placeholder="Account" ng-model="formData.account">
-						<input type="password" class="form-control " placeholder="Password" ng-model="formData.password">
+						<input type="account" class="form-control " placeholder="Account" ng-model="formData.username">
+						<input type="password" class="form-control " placeholder="Password" ng-model="formData.passwd">
 					</div>
-
+					<p class="text-center" ng-show="loading">
+					<span class="fa fa-spinner fa-spin fa-3x"></span>
+					</p>
 					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createCustomer()">Create</button>
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="newAccount()">Create</button>
 				</form>
 				<br>
 				<a href="login.html" target="_self">已有帐号，登录</a>

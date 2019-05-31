@@ -1,49 +1,63 @@
 angular.module('todoController', [])
     //用户业务操作customer.html对应js脚本
 	
-	.controller('mainCustomer', ['$scope','$http','Todos', function($scope, $http, Todos) {
+	.controller('mainCustomer', ['$scope','$http','Bankings', function($scope, $http, Bankings) {
 		
 
 		// GET =====================================================================
 		// when landing on the page, get all todos and show them
 		// use the service to get all the todos
-		Todos.get()
+		Bankings.getAccount()
 			.success(function(data) {
-				$scope.todos = data;
+				$scope.account = data;
 				$scope.loading = false;
 			});
 
-		// CREATE ==================================================================
-		// when submitting the add form, send the text to the node API
-		$scope.createCustomer = function() {
-
-			// validate the formData to make sure that something is there
-			// if form is empty, nothing will happen
-			if ($scope.formData.text != undefined) {
+		$scope.deposit = function(){
+			if ($scope.formData.amount != undefined){
 				$scope.loading = true;
-
-				// call the create function from our service (returns a promise object)
-				Todos.createCustomer($scope.formData)
-
-					// if successful creation, call our get function to get all the new todos
-					.success(function(data) {
-						$scope.loading = false;
-						$scope.formData = {}; // clear the form so our user is ready to enter another
-						$scope.todos = data; // assign our new list of todos
-					});
+				Bankings.deposit($scope.formData)
+				.success(function(data){
+					$scope.loading = false;
+					alert('success');
+				})
+				.error(function(data){
+					$scope.loading = false;
+					alert(data);
+				});
 			}
+			else alert('please enter the amount');
+		};
+		
+		$scope.withdraw = function(){
+			if ($scope.formData.amount != undefined){
+				$scope.loading = true;
+				Bankings.withdraw($scope.formData)
+				.success(function(data){
+					$scope.loading = false;
+					alert('success');
+				})
+				.error(function(data){
+					$scope.loading = false;
+					alert(data);
+				});
+			}
+			else alert('please enter the amount');
 		};
 
-		// DELETE ==================================================================
-		// delete a todo after checking it
-		$scope.deleteCustomer = function(id) {
-			$scope.loading = true;
-
-			Todos.delete(id)
-				// if successful creation, call our get function to get all the new todos
-				.success(function(data) {
+		$scope.transaction = function(){
+			if ($scope.formData.amount != undefined && $scope.formData.object != undefined){
+				$scope.loading = true;
+				Bankings.transaction($scope.formData)
+				.success(function(data){
 					$scope.loading = false;
-					$scope.todos = data; // assign our new list of todos
+					alert('success');
+				})
+				.error(function(data){
+					$scope.loading = false;
+					alert(data);
 				});
+			}
+			else alert('please enter the amount');
 		};
 	}]);

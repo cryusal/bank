@@ -32,23 +32,23 @@
 
 		<!-- HEADER AND TODO COUNT -->
 		<div id = "customer-list" class="jumbotron text-center">
-			<h1>Hello! Customer {{todos.value}}</h1>
-			<h2>Now your account have <span class="label label-info">{{ todos.num }}</span></h2>
+			<h1>Hello! Customer {{account.username}}</h1>
+			<h2>Now your account have <span class="label label-info">{{ account.balance }}</span></h2>
 		</div>
         <div class="save-restore" class="jumbotron text-center">
 			<div class="form-group">
 				<!-- 输入存取金额 -->
-				<input type="text" class="form-control " placeholder="金额" ng-model="formData.num">
-                <button type="submit" class="btn btn-primary btn-lg" ng-click="">存储</button>
-                <button type="submit" class="btn btn-primary btn-lg" ng-click="">取出</button>
+				<input type="text" class="form-control " placeholder="金额" ng-model="formData.amount">
+                <button type="submit" class="btn btn-primary btn-lg" ng-click="deposit()">存储</button>
+                <button type="submit" class="btn btn-primary btn-lg" ng-click="withdraw()">取出</button>
 			</div>
         </div>
         <div class="transform" class="jumbotron text-center">
             <div class="form-group">
 				<!-- 输入转账金额 -->
-				<input type="text" class="form-control " placeholder="转账金额" ng-model="formData.num">
-                <input type="text" class="form-control " placeholder="转账用户" ng-model="formData.text">
-                <button type="submit" class="btn btn-primary btn-lg" ng-click="">转账</button>
+				<input type="text" class="form-control " placeholder="转账金额" ng-model="formData.amount">
+                <input type="text" class="form-control " placeholder="转账用户" ng-model="formData.object">
+                <button type="submit" class="btn btn-primary btn-lg" ng-click="transaction()">转账</button>
 			</div>
         </div>
         <div class="transform" class="jumbotron text-center">

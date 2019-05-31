@@ -17,8 +17,7 @@ RUN npm install
 COPY . /usr/src
 
 # Expose the port the app runs in
-EXPOSE 8084
+EXPOSE 8081
 
-ENV PORT 8084
 # Serve the app
 CMD ["npm", "start"]

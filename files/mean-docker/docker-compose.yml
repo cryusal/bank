@@ -5,7 +5,7 @@ services:
   express: #name of the first service
     build: express-server # specify the directory of the Dockerfile
     ports:
-      - "8084:8084" #specify ports forwarding
+      - "8081:8081" #specify ports forwarding
     links:
       - database
 
